@@ -12,8 +12,8 @@
     "web": "start ./public/index.html",
     "server": "node ./src/server.js"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "JB Ladera (https://github.com/minidomo/)",
+  "license": "The Unlicense",
   "dependencies": {
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
