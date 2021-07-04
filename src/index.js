@@ -12,7 +12,7 @@ const mapRegex = /[^\d]+(\d+)[^\d]+(\d+).*/g;
  * @returns {string}
  */
 const getBackgroundPath = () => {
-    const [, mapSetId, beatmapId] = mapRegex.exec(config.map);
+    const [, mapSetId, beatmapId] = mapRegex.exec(config.data.map);
     const [mapSetDir] = fs.readdirSync(config.osu.path, { encoding: 'utf8', withFileTypes: true })
         .filter(f => f.isDirectory() && f.name.startsWith(mapSetId))
         .map(f => f.name);
@@ -31,6 +31,15 @@ const getBackgroundPath = () => {
         .split(/[\r\n]+/)[1];
     const backgroundFile = backgroundLine.substring(backgroundLine.indexOf('"') + 1, backgroundLine.lastIndexOf('"'));
     return `${config.osu.path}/${mapSetDir}/${backgroundFile}`;
+};
+
+/**
+ * 
+ * @param {string} bgPath 
+ * @returns {Promise<Jimp>}
+ */
+const getOriginalBackground = async (bgPath) => {
+    return await Jimp.read(bgPath);
 };
 
 /**
@@ -76,19 +85,19 @@ const getAvatar = async (userId) => {
 
 /**
  * 
- * @param {Jimp} processedBg 
- * @param {Jimp} croppedBg 
- * @param {Jimp} avatar1
- * @param {Jimp} avatar2 
+ * @param {Jimp[]} images 
  */
-const writeThumbnail = (processedBg, croppedBg, avatar1, avatar2) => {
+const writeThumbnail = (...images) => {
     const id = fs.readdirSync(config.out, { encoding: 'utf8', withFileTypes: true })
         .filter(f => f.isFile() && f.name.endsWith('.png'))
         .length;
-    processedBg.write(`${config.out}/image${id}.png`);
-    croppedBg.write(`${config.out}/image${id + 1}.png`);
-    avatar1.write(`${config.out}/image${id + 2}.png`);
-    avatar2.write(`${config.out}/image${id + 3}.png`);
+    images.forEach((img, i) => {
+        img.write(`${config.out}/image${id + i}.png`);
+    });
+};
+
+const writeJsonData = () => {
+    fs.writeFileSync(`${config.out}/data.json`, JSON.stringify(config.data, null, 4), { encoding: 'utf8' });
 };
 
 (async () => {
@@ -96,15 +105,16 @@ const writeThumbnail = (processedBg, croppedBg, avatar1, avatar2) => {
     const processedBg = await getProcessedBackground(bgPath);
     const croppedBg = await getCroppedBackground(bgPath);
 
-    const user1 = await osuApi.getUser({ u: config.username0 });
-    const user2 = await osuApi.getUser({ u: config.username1 });
+    const user1 = await osuApi.getUser({ u: config.data.usernames[0] });
+    const user2 = await osuApi.getUser({ u: config.data.usernames[1] });
 
     const avatar1 = await getAvatar(user1.id);
     const avatar2 = await getAvatar(user2.id);
 
+    const originalBg = await getOriginalBackground(bgPath);
+
     console.log(`${processedBg.getWidth()} x ${processedBg.getHeight()}`);
 
-    writeThumbnail(processedBg, croppedBg, avatar1, avatar2);
-
-
+    writeThumbnail(processedBg, croppedBg, avatar1, avatar2, originalBg);
+    writeJsonData();
 })();

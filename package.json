@@ -4,19 +4,21 @@
   "description": "",
   "main": "./src/index.js",
   "scripts": {
-    "clean": "rm -rf ./out/image*",
-    "start": "node -r dotenv/config .",
-    "reset": "npm run clean && npm run start && cp ./out/* ./public/assets/ && npm run browserify",
+    "clean": "rm -rf ./out/*",
+    "generate:raw": "node -r dotenv/config .",
+    "generate:ss": "node ./src/screenshot.js",
+    "copy": "cp ./out/image* ./public/assets && cp ./out/data.json ./public",
+    "start": "npm run clean && npm run generate:raw && npm run copy && npm run generate:ss",
     "web": "start ./public/index.html",
-    "browserify": "browserify ./src/public.js -o ./public/scripts/index.js",
-    "full": "npm run reset && npm run web"
+    "server": "node ./src/server.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "browserify": "^17.0.0",
     "dotenv": "^10.0.0",
+    "express": "^4.17.1",
     "jimp": "^0.16.1",
-    "node-osu": "^2.2.1"
+    "node-osu": "^2.2.1",
+    "puppeteer": "^10.1.0"
   }
 }

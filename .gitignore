@@ -3,4 +3,5 @@ temp/
 out/
 config.json
 .env
-public/scripts/index.js
+public/assets/image*
+public/data.json

@@ -1,25 +1,33 @@
 @font-face {
     font-family: 'Proxima Nova Soft W03 Medium';
-    src        : url('Proxima Nova Soft W03 Medium.eot');
-    src        : url('Proxima Nova Soft W03 Medium.eot?#iefix') format('embedded-opentype'),
-        url('Proxima Nova Soft W03 Medium.woff2') format('woff2');
+    src        : url('./fonts/Proxima Nova Soft W03 Medium.eot');
+    src        : url('./fonts/Proxima Nova Soft W03 Medium.eot?#iefix') format('embedded-opentype'),
+        url('./fonts/Proxima Nova Soft W03 Medium.woff2') format('woff2');
     font-weight: normal;
     font-style : normal;
 }
 
 @font-face {
     font-family: 'ProximaNovaSoftW03-Medium';
-    src        : url('ProximaNovaSoftW03-Medium.svg#ProximaNovaSoftW03-Medium') format('svg'),
-        url('ProximaNovaSoftW03-Medium.ttf') format('truetype'),
-        url('ProximaNovaSoftW03-Medium.woff') format('woff');
+    src        : url('./fonts/ProximaNovaSoftW03-Medium.svg#ProximaNovaSoftW03-Medium') format('svg'),
+        url('./fonts/ProximaNovaSoftW03-Medium.ttf') format('truetype'),
+        url('./fonts/ProximaNovaSoftW03-Medium.woff') format('woff');
     font-weight: normal;
     font-style : normal;
+}
+
+:root {
+    --main-color       : rgba(205, 109, 60, 1);
+    --transparent-color: rgba(205, 109, 60, .4);
 }
 
 html,
 body {
     font-family: 'ProximaNovaSoftW03-Medium';
-    margin     : 5% 0 0 5%;
+}
+
+body>div {
+    margin: 100px 0 0 100px;
 }
 
 .main {
@@ -48,7 +56,8 @@ body {
     -moz-border-radius   : 20px 20px 20px 20px;
     -o-border-radius     : 20px 20px 20px 20px;
     border-radius        : 20px 20px 20px 20px;
-    box-shadow           : 3px 3px 20px black;
+    border-bottom        : 8px solid var(--main-color);
+    box-shadow           : 0 3px 20px black;
     position             : absolute;
     z-index              : -1;
 }
@@ -134,7 +143,8 @@ body {
     -moz-border-radius   : 20px 20px 20px 20px;
     -o-border-radius     : 20px 20px 20px 20px;
     border-radius        : 20px 20px 20px 20px;
-    background-color     : rgba(205, 109, 60, .4);
+    background-color     : var(--transparent-color);
+    border-top           : 4px solid var(--main-color);
 }
 
 .usernames span {
