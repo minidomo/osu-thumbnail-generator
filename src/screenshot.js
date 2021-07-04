@@ -1,3 +1,5 @@
+const config = require('../config.json');
+
 const puppeteer = require('puppeteer');
 
 let browser;
@@ -12,7 +14,7 @@ let browser;
         },
         type: 'jpeg',
         quality: 100,
-        path: './out/screenshot.jpg',
+        path: `${config.out}/screenshot.jpg`,
     };
     browser = await puppeteer.launch();
     const page = await browser.newPage();

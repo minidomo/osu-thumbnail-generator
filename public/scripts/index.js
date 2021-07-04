@@ -10,23 +10,15 @@ const loadData = () => {
 };
 
 const updateColor = () => {
-    const assignColor = (img) => {
-        Vibrant.from(img).getPalette((err, palette) => {
-            if (err) {
-                console.error(err);
-                return;
-            }
-            const [r, g, b] = palette.Vibrant.getRgb();
-            document.documentElement.style.setProperty('--main-color', `rgba(${r},${g},${b},1)`);
-            document.documentElement.style.setProperty('--transparent-color', `rgba(${r},${g},${b},.4)`);
-        });
-    };
-    const img = document.querySelector('[id="background-original"]');
-    if (img.complete) {
-        assignColor(img);
-    } else {
-        img.onload = () => assignColor(img);
-    }
+    Vibrant.from('../assets/image4.png').getPalette((err, palette) => {
+        if (err) {
+            console.error(err);
+            return;
+        }
+        const [r, g, b] = palette.Vibrant.getRgb();
+        document.documentElement.style.setProperty('--main-color', `rgba(${r},${g},${b},1)`);
+        document.documentElement.style.setProperty('--transparent-color', `rgba(${r},${g},${b},.4)`);
+    });
 };
 
 window.onload = () => {
