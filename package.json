@@ -5,11 +5,18 @@
   "main": "./src/index.js",
   "scripts": {
     "clean": "rm -rf ./out/image*",
-    "start": "node ."
+    "start": "node -r dotenv/config .",
+    "reset": "npm run clean && npm run start && cp ./out/* ./public/assets/ && npm run browserify",
+    "web": "start ./public/index.html",
+    "browserify": "browserify ./src/public.js -o ./public/scripts/index.js",
+    "full": "npm run reset && npm run web"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "jimp": "^0.16.1"
+    "browserify": "^17.0.0",
+    "dotenv": "^10.0.0",
+    "jimp": "^0.16.1",
+    "node-osu": "^2.2.1"
   }
 }

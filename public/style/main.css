@@ -1,0 +1,162 @@
+@font-face {
+    font-family: 'Proxima Nova Soft W03 Medium';
+    src        : url('Proxima Nova Soft W03 Medium.eot');
+    src        : url('Proxima Nova Soft W03 Medium.eot?#iefix') format('embedded-opentype'),
+        url('Proxima Nova Soft W03 Medium.woff2') format('woff2');
+    font-weight: normal;
+    font-style : normal;
+}
+
+@font-face {
+    font-family: 'ProximaNovaSoftW03-Medium';
+    src        : url('ProximaNovaSoftW03-Medium.svg#ProximaNovaSoftW03-Medium') format('svg'),
+        url('ProximaNovaSoftW03-Medium.ttf') format('truetype'),
+        url('ProximaNovaSoftW03-Medium.woff') format('woff');
+    font-weight: normal;
+    font-style : normal;
+}
+
+html,
+body {
+    font-family: 'ProximaNovaSoftW03-Medium';
+}
+
+.main {
+    margin  : 10% 0 0 10%;
+    overflow: hidden;
+    width   : 1280px;
+    height  : 720px;
+}
+
+#background-main {
+    position: absolute;
+    z-index : -1;
+}
+
+.banner {
+    margin         : 20px 40px 0 40px;
+    width          : 1200px;
+    height         : 230px;
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
+}
+
+
+#background-banner {
+    -webkit-border-radius: 20px 20px 20px 20px;
+    -moz-border-radius   : 20px 20px 20px 20px;
+    -o-border-radius     : 20px 20px 20px 20px;
+    border-radius        : 20px 20px 20px 20px;
+    box-shadow           : 3px 3px 20px black;
+    position             : absolute;
+    z-index              : -1;
+}
+
+#title {
+    color    : white;
+    font-size: 84px;
+}
+
+.banner-caption {
+    display        : flex;
+    justify-content: center;
+    line-height    : 1;
+}
+
+#round {
+    color      : white;
+    font-size  : 50px;
+    text-shadow: 0 0 15px white;
+    margin     : 34px 0 0 0;
+}
+
+.middle-row {
+    white-space: nowrap;
+}
+
+.middle-row>div {
+    display       : inline-block;
+    vertical-align: top;
+}
+
+.avatar {
+    width     : 478px;
+    height    : 195px;
+    text-align: center;
+}
+
+.avatar>img {
+    width                : 160px;
+    height               : 160px;
+    -webkit-border-radius: 20px 20px 20px 20px;
+    -moz-border-radius   : 20px 20px 20px 20px;
+    -o-border-radius     : 20px 20px 20px 20px;
+    border-radius        : 20px 20px 20px 20px;
+    background-color     : #333333;
+    box-shadow           : 0 0 10px black;
+}
+
+#avatar-left {
+    margin: 0 0 0 40px;
+}
+
+#avatar-right {
+    margin: 0 40px 0 0;
+}
+
+.middle-text {
+    width : 238px;
+    height: 195px;
+    margin: 0 3px 0 3px;
+}
+
+#message-middle {
+    color          : white;
+    font-size      : 50px;
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
+    height         : 100%;
+}
+
+.usernames {
+    white-space: nowrap;
+}
+
+.usernames>div {
+    display              : inline-block;
+    color                : white;
+    font-size            : 40px;
+    width                : 480px;
+    height               : 82px;
+    -webkit-border-radius: 20px 20px 20px 20px;
+    -moz-border-radius   : 20px 20px 20px 20px;
+    -o-border-radius     : 20px 20px 20px 20px;
+    border-radius        : 20px 20px 20px 20px;
+    background-color     : rgba(205, 109, 60, .4);
+}
+
+.usernames span {
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
+    height         : 100%;
+}
+
+#username-left {
+    margin: 0 120px 0 40px;
+}
+
+#username-right {
+    margin: 0 40px 0 120px;
+}
+
+.custom-text {
+    color          : #D4D2D5;
+    font-size      : 50px;
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
+    margin         : 19px 0 0 0;
+}

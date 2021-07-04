@@ -2,24 +2,29 @@ const config = require('../config.json');
 
 const fs = require('fs');
 const Jimp = require('jimp');
+const osu = require('node-osu');
+const osuApi = new osu.Api(process.env.OSU_API_KEY);
+
+const mapRegex = /[^\d]+(\d+)[^\d]+(\d+).*/g;
 
 /**
  * 
  * @returns {string}
  */
 const getBackgroundPath = () => {
+    const [, mapSetId, beatmapId] = mapRegex.exec(config.map);
     const [mapSetDir] = fs.readdirSync(config.osu.path, { encoding: 'utf8', withFileTypes: true })
-        .filter(f => f.isDirectory() && f.name.startsWith(config.map.mapSetId))
+        .filter(f => f.isDirectory() && f.name.startsWith(mapSetId))
         .map(f => f.name);
     const [beatmapFile] = fs.readdirSync(`${config.osu.path}/${mapSetDir}`, { encoding: 'utf8', withFileTypes: true })
         .filter(f => f.isFile() && f.name.endsWith('.osu'))
         .map(f => f.name)
         .filter(name => {
-            const [beatmapID] = fs.readFileSync(`${config.osu.path}/${mapSetDir}/${name}`, { encoding: 'utf8' })
+            const [curBeatmapId] = fs.readFileSync(`${config.osu.path}/${mapSetDir}/${name}`, { encoding: 'utf8' })
                 .split(/[\r\n]+/)
                 .filter(line => line.startsWith('BeatmapID'))
-                .map(line => parseInt(line.split(/:/)[1]));
-            return beatmapID === config.map.beatmapId;
+                .map(line => line.split(/:/)[1]);
+            return curBeatmapId === beatmapId;
         });
     const backgroundLine = fs.readFileSync(`${config.osu.path}/${mapSetDir}/${beatmapFile}`, { encoding: 'utf8' })
         .split('//Background and Video events')[1]
@@ -90,10 +95,16 @@ const writeThumbnail = (processedBg, croppedBg, avatar1, avatar2) => {
     const bgPath = getBackgroundPath();
     const processedBg = await getProcessedBackground(bgPath);
     const croppedBg = await getCroppedBackground(bgPath);
-    const avatar1 = await getAvatar(config.team1.userId);
-    const avatar2 = await getAvatar(config.team2.userId);
+
+    const user1 = await osuApi.getUser({ u: config.username0 });
+    const user2 = await osuApi.getUser({ u: config.username1 });
+
+    const avatar1 = await getAvatar(user1.id);
+    const avatar2 = await getAvatar(user2.id);
 
     console.log(`${processedBg.getWidth()} x ${processedBg.getHeight()}`);
 
     writeThumbnail(processedBg, croppedBg, avatar1, avatar2);
+
+
 })();
