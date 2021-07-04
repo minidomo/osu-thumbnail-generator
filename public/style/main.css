@@ -24,6 +24,7 @@
 html,
 body {
     font-family: 'ProximaNovaSoftW03-Medium';
+    margin     : 0;
 }
 
 body>div {

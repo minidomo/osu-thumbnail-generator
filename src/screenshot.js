@@ -16,7 +16,8 @@ let browser;
     };
     browser = await puppeteer.launch();
     const page = await browser.newPage();
-    await page.goto('file:///C:/main/code/osu-thumbnail-generator/public/index.html');
+    await page.goto('http://localhost:8080/');
+    await page.waitForTimeout(1000);
     await page.screenshot(screenshotOpts);
     await browser.close();
 })().catch(async (err) => {

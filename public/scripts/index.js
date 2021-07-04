@@ -11,11 +11,16 @@ const loadData = () => {
 
 const updateColor = () => {
     const assignColor = (img) => {
-        const colors = colorThief.getColor(img);
-        document.documentElement.style.setProperty('--main-color', `rgba(${colors[0]},${colors[1]},${colors[2]},1)`);
-        document.documentElement.style.setProperty('--transparent-color', `rgba(${colors[0]},${colors[1]},${colors[2]},.4)`);
+        Vibrant.from(img).getPalette((err, palette) => {
+            if (err) {
+                console.error(err);
+                return;
+            }
+            const [r, g, b] = palette.Vibrant.getRgb();
+            document.documentElement.style.setProperty('--main-color', `rgba(${r},${g},${b},1)`);
+            document.documentElement.style.setProperty('--transparent-color', `rgba(${r},${g},${b},.4)`);
+        });
     };
-    const colorThief = new ColorThief();
     const img = document.querySelector('[id="background-original"]');
     if (img.complete) {
         assignColor(img);
