@@ -78,12 +78,12 @@ const getAvatar = async (userId) => {
  */
 const writeThumbnail = (processedBg, croppedBg, avatar1, avatar2) => {
     const id = fs.readdirSync(config.out, { encoding: 'utf8', withFileTypes: true })
-        .filter(f => f.isFile() && f.name.endsWith('.jpg'))
+        .filter(f => f.isFile() && f.name.endsWith('.png'))
         .length;
-    processedBg.write(`${config.out}/image${id}.jpg`);
-    croppedBg.write(`${config.out}/image${id + 1}.jpg`);
-    avatar1.write(`${config.out}/image${id + 2}.jpg`);
-    avatar2.write(`${config.out}/image${id + 3}.jpg`);
+    processedBg.write(`${config.out}/image${id}.png`);
+    croppedBg.write(`${config.out}/image${id + 1}.png`);
+    avatar1.write(`${config.out}/image${id + 2}.png`);
+    avatar2.write(`${config.out}/image${id + 3}.png`);
 };
 
 (async () => {
