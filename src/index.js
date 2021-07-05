@@ -69,7 +69,7 @@ const getCroppedBackground = async (bgPath) => {
 
 /**
  * 
- * @param {number} userId 
+ * @param {string} userId 
  * @returns {Promise<Jimp>}
  */
 const getAvatar = async (userId) => {
