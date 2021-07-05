@@ -4,21 +4,18 @@
   "description": "",
   "main": "./src/index.js",
   "scripts": {
-    "clean": "rm -rf ./out/*",
-    "generate:raw": "node -r dotenv/config .",
+    "clean": "node ./src/clean.js",
+    "generate:raw": "node .",
     "generate:ss": "node ./src/screenshot.js",
-    "copy": "cp ./out/image* ./public/assets && cp ./out/data.json ./public",
+    "copy": "node ./src/copy.js",
     "start": "npm run clean && npm run generate:raw && npm run copy && npm run generate:ss",
-    "web": "start ./public/index.html",
     "server": "node ./src/server.js"
   },
   "author": "JB Ladera (https://github.com/minidomo/)",
   "license": "The Unlicense",
   "dependencies": {
-    "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "jimp": "^0.16.1",
-    "node-osu": "^2.2.1",
     "puppeteer": "^10.1.0"
   }
 }

@@ -14,7 +14,7 @@ let browser;
         },
         type: 'jpeg',
         quality: 100,
-        path: `${config.out}/screenshot.jpg`,
+        path: './out/screenshot.jpg',
     };
     browser = await puppeteer.launch();
     const page = await browser.newPage();

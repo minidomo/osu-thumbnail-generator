@@ -1,7 +1,7 @@
 const loadData = () => {
     $.getJSON('../data.json', (data) => {
-        document.getElementById('username0').textContent = data.usernames[0];
-        document.getElementById('username1').textContent = data.usernames[1];
+        document.getElementById('username0').textContent = data.players[0].username;
+        document.getElementById('username1').textContent = data.players[1].username;
         document.getElementById('title').textContent = data.title;
         document.getElementById('round').textContent = data.round;
         document.getElementById('message-middle').textContent = data.message.middle;

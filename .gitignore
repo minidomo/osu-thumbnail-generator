@@ -1,6 +1,7 @@
 node_modules/
 temp/
-out/
+out/*
+!out/.gitkeep
 config.json
 .env
 public/assets/image*
