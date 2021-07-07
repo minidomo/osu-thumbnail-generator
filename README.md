@@ -38,4 +38,4 @@ A full list of the provided scripts can be seen below.
 | `copy` | Copies the files needed from `./out/` to `./public/`. |
 | `generate:raw` | Generates the images and data file used for the thumbnail and outputs to the `./out/` folder.  |
 | `generate:ss` | Generates a screenshot of the current state of the thumbnail. |
-| `start` | Runs the following scripts in the this order: `clean`, `generate:raw`, `copy`, `generate:ss`. |
+| `start` | Runs the following scripts in this order: `clean`, `generate:raw`, `copy`, `generate:ss`. |
