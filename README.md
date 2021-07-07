@@ -4,6 +4,15 @@
 - HTML/CSS/JavaScript
 
 ## Getting Started
+Clone the repository by typing the following into the command line.
+```bash
+git clone https://github.com/minidomo/osu-thumbnail-generator.git
+```
+Install the necessary dependencies by typing the following into the command line.
+```bash
+npm install
+```
+
 This program requires a file, `config.json`, in the current directory. An example of its structure and contents can be seen in the `config.json.example` file. 
 
 For clarification, a player's user ID can be obtained through the URL of their profile as the URL follows the format, `https://osu.ppy.sh/users/<UserId>`. In addition, a beatmap's URL follows the format, `https://osu.ppy.sh/beatmapsets/<MapsetId>#osu/<BeatmapId>`.
