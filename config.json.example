@@ -7,7 +7,6 @@
             "custom": "Custom Text"
         },
         "players": {
-            "containsUserId": true,
             "list": [
                 {
                     "name": "rushia1",
