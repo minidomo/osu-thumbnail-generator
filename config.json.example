@@ -6,18 +6,16 @@
             "middle": "1 v 1",
             "custom": "Custom Text"
         },
-        "players": {
-            "list": [
-                {
-                    "name": "rushia1",
-                    "userId": "7562902"
-                },
-                {
-                    "name": "WhiteCat",
-                    "userId": "4504101"
-                }
-            ]
-        },
+        "players": [
+            {
+                "name": "rushia1",
+                "userId": "7562902"
+            },
+            {
+                "name": "WhiteCat",
+                "userId": "4504101"
+            }
+        ],
         "map": "https://osu.ppy.sh/beatmapsets/320118#osu/715074"
     },
     "osuSongsDir": "absolute/path/to/osu/songs/directory"
