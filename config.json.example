@@ -8,11 +8,11 @@
         },
         "players": [
             {
-                "name": "rushia1",
+                "username": "rushia1",
                 "userId": "7562902"
             },
             {
-                "name": "WhiteCat",
+                "username": "WhiteCat",
                 "userId": "4504101"
             }
         ],
