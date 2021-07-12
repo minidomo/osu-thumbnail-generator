@@ -26,7 +26,8 @@ const getBackgroundPath = () => {
         });
     const backgroundLine = fs.readFileSync(`${config.osuSongsDir}/${mapSetDir}/${beatmapFile}`, { encoding: 'utf8' })
         .split('//Background and Video events')[1]
-        .split(/[\r\n]+/)[1];
+        .split(/[\r\n]+/)
+        .filter(line => line.startsWith('0,0'))[0];
     const backgroundFile = backgroundLine.substring(backgroundLine.indexOf('"') + 1, backgroundLine.lastIndexOf('"'));
     return `${config.osuSongsDir}/${mapSetDir}/${backgroundFile}`;
 };
