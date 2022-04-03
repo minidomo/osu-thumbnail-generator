@@ -50,8 +50,8 @@ const getProcessedBackground = async (bgPath) => {
     const bg = await Jimp.read(bgPath);
     return bg
         .resize(1280, 720)
-        .blur(10)
-        .brightness(-.6);
+        .blur(15)
+        .brightness(-.7);
 };
 
 /**
@@ -65,7 +65,7 @@ const getCroppedBackground = async (bgPath) => {
         .resize(1280, 720)
         .resize(1200, Jimp.AUTO)
         .crop(0, 222, 1200, 230)
-        .brightness(-.4);
+        .brightness(-.5);
 };
 
 /**

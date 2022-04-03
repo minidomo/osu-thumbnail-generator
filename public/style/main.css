@@ -1,19 +1,21 @@
 @font-face {
-    font-family: 'Proxima Nova Soft W03 Medium';
-    src        : url('./fonts/Proxima Nova Soft W03 Medium.eot');
-    src        : url('./fonts/Proxima Nova Soft W03 Medium.eot?#iefix') format('embedded-opentype'),
-        url('./fonts/Proxima Nova Soft W03 Medium.woff2') format('woff2');
-    font-weight: normal;
-    font-style : normal;
+    font-family: "Torus Light";
+    src        : url("fonts/Torus\ Light.otf");
 }
 
 @font-face {
-    font-family: 'ProximaNovaSoftW03-Medium';
-    src        : url('./fonts/ProximaNovaSoftW03-Medium.svg#ProximaNovaSoftW03-Medium') format('svg'),
-        url('./fonts/ProximaNovaSoftW03-Medium.ttf') format('truetype'),
-        url('./fonts/ProximaNovaSoftW03-Medium.woff') format('woff');
-    font-weight: normal;
-    font-style : normal;
+    font-family: "Torus Regular";
+    src        : url("fonts/Torus\ Regular.otf");
+}
+
+@font-face {
+    font-family: "Torus Bold";
+    src        : url("fonts/Torus\ Bold.otf");
+}
+
+@font-face {
+    font-family: "Torus SemiBold";
+    src        : url("fonts/Torus\ SemiBold.otf");
 }
 
 :root {
@@ -23,7 +25,7 @@
 
 html,
 body {
-    font-family: 'ProximaNovaSoftW03-Medium';
+    font-family: 'Torus SemiBold';
     margin     : 0;
 }
 
@@ -64,8 +66,11 @@ body>div {
 }
 
 #title {
-    color    : white;
-    font-size: 84px;
+    color       : white;
+    /* font-size: 84px; */
+    font-size   : 100px;
+    text-shadow : 0 0 5px white;
+    font-family : 'Torus Regular';
 }
 
 .banner-caption {
@@ -170,4 +175,5 @@ body>div {
     justify-content: center;
     align-items    : center;
     margin         : 19px 0 0 0;
+    font-family    : 'Torus Regular';
 }
